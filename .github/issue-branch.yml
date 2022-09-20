@@ -1,2 +1,3 @@
 branchName: full
 autoCloseIssue: true
+defaultBranch: 'dev'
