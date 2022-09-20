@@ -1,0 +1,13 @@
+server:
+  port: # port
+
+mybatis:
+  config-location: # classpath:mapper.xml
+  mapper-locations: # classpath:FoodyLabDao.xml
+
+spring:
+  datasource:
+    url: # DB url
+    username: # DB id
+    password: # DB pw
+    driver-class-name: # DB driver
