@@ -22,8 +22,12 @@ public class Order {
         isNullUser(user);
         isNullStore(store);
         isOrderAmountHigherThanMinimumOrderAmount(store, orderAmount);
-        if(orderedDate.isBefore(LocalDate.now())) throw new IllegalArgumentException("주문이 생성된 날짜보다 이전 입니다.");
+        isBeforeDateOrdered(orderedDate);
         return new Order(user, store, orderAmount, orderedDate);
+    }
+
+    private static void isBeforeDateOrdered(LocalDate orderedDate) {
+        if(orderedDate.isBefore(LocalDate.now())) throw new IllegalArgumentException("주문이 생성된 날짜보다 이전 입니다.");
     }
 
     private static void isOrderAmountHigherThanMinimumOrderAmount(Store store, long orderAmount) {
