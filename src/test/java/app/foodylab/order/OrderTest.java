@@ -21,14 +21,19 @@ public class OrderTest {
                         new Store("1", "배배큐", StoreState.OPEN, 15000L),
                         20000L,
                         LocalDate.now()
-                ));
+                ),"유저는 필수값 입니다.");
     }
 
     @Test
     @DisplayName("주문 하려고 하는 가게가 없으면 주문 생성이 안된다.")
     void test2() {
         assertThrows(IllegalArgumentException.class,
-                () -> Order.of(new User("1", "길동"), null, 15000L, LocalDate.now()));
+                () -> Order.of(
+                        new User("1", "길동"),
+                        null,
+                        15000L,
+                        LocalDate.now()
+                ),"가게는 필수값 입니다.");
     }
 
     @Test
@@ -52,7 +57,7 @@ public class OrderTest {
                         new Store("1", "배배큐", StoreState.OPEN, 15000L),
                         14000L,
                         LocalDate.now()
-                ));
+                ), "주문 최소 금액 미만 입니다.");
     }
 
     @Test
@@ -76,6 +81,6 @@ public class OrderTest {
                         new Store("1", "배배큐", StoreState.OPEN, 15000L),
                         16000L,
                         LocalDate.now().minusDays(1)
-                ));
+                ),"주문이 생성된 날짜보다 이전 입니다.");
     }
 }
