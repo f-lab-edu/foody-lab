@@ -4,14 +4,21 @@ import app.foodylab.user.User;
 
 public class Order {
     private final User user;
+    private final Store store;
 
-    public Order(User user) {
+    public Order(User user, Store store) {
         this.user = user;
+        this.store = store;
     }
 
-    public static Order of(User user) {
+    public static Order of(User user, Store store) {
         isNullUser(user);
-        return new Order(user);
+        isNullStore(store);
+        return new Order(user, store);
+    }
+
+    private static void isNullStore(Store store) {
+        if(store == null) throw new IllegalArgumentException("가게는 필수값 입니다.");
     }
 
     private static void isNullUser(User user) {
