@@ -4,19 +4,19 @@ import java.time.LocalDate;
 
 public class PriceCoupon {
 
-    private final int saledPrice;
+    private final int discountPrice;
     private final LocalDate startDate;
     private final LocalDate endDate;
 
 
     public PriceCoupon(int saledPrice, LocalDate startDate, LocalDate endDate) {
-        this.saledPrice = saledPrice;
+        this.discountPrice = saledPrice;
         this.startDate = startDate;
         this.endDate = endDate;
     }
 
-    public int getSaledPrice() {
-        return saledPrice;
+    public int getDiscountPrice() {
+        return discountPrice;
     }
 
     public static PriceCoupon of(int saledPrice) {
@@ -45,6 +45,6 @@ public class PriceCoupon {
     }
 
     private static void isNegative(int saledPrice) {
-        if (saledPrice <= 0) throw  new IllegalArgumentException("할인 금액은 0보다 커야 합니다.");
+        if (saledPrice <= 0) throw new IllegalArgumentException("할인 금액은 0보다 커야 합니다.");
     }
 }
