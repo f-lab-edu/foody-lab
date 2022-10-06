@@ -1,23 +1,17 @@
 package app.foodylab.coupon.domain;
 
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+
 import java.time.LocalDate;
 
+@RequiredArgsConstructor
+@Getter
 public class PriceCoupon {
 
     private final int discountPrice;
     private final LocalDate startDate;
     private final LocalDate endDate;
-
-
-    public PriceCoupon(int saledPrice, LocalDate startDate, LocalDate endDate) {
-        this.discountPrice = saledPrice;
-        this.startDate = startDate;
-        this.endDate = endDate;
-    }
-
-    public int getDiscountPrice() {
-        return discountPrice;
-    }
 
     public static PriceCoupon of(int saledPrice) {
         isNegative(saledPrice);
