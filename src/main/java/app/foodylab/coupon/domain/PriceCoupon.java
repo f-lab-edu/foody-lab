@@ -15,7 +15,8 @@ public class PriceCoupon {
 
     public static PriceCoupon of(int saledPrice) {
         isNegative(saledPrice);
-        return of(saledPrice, LocalDate.now(), LocalDate.now().plusYears(1));
+        LocalDate now = LocalDate.now();
+        return of(saledPrice, now, now.plusYears(1));
     }
 
     public static PriceCoupon of(int saledPrice, LocalDate startDate, LocalDate endDate) {
