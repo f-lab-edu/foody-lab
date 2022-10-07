@@ -22,9 +22,10 @@ public class PriceCoupon {
     }
 
     public static PriceCoupon of(int discountPrice, LocalDate startDate, LocalDate endDate) {
+        LocalDate now = LocalDate.now();
         require(i -> i <= 0, discountPrice, "할인 금액은 0보다 커야 합니다.");
-        require(sDate -> sDate.isBefore(LocalDate.now()), startDate, "쿠폰 사용 시작일은 현재보다 이전일 수 없습니다.");
-        require(eDate -> eDate.isBefore(LocalDate.now()), endDate, "쿠폰 사용 종료일은 현재보다 이전일 수 없습니다.");
+        require(sDate -> sDate.isBefore(now), startDate, "쿠폰 사용 시작일은 현재보다 이전일 수 없습니다.");
+        require(eDate -> eDate.isBefore(now), endDate, "쿠폰 사용 종료일은 현재보다 이전일 수 없습니다.");
         require((sDate, eDate) -> eDate.isBefore(sDate), startDate, endDate, "쿠폰 사용 종료일은 시작일 이전일 수 없습니다.");
         return new PriceCoupon(discountPrice, startDate, endDate);
     }
