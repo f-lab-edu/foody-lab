@@ -1,9 +1,9 @@
 package app.foodylab.order;
 
-import app.foodylab.OrderFixture;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import static app.foodylab.OrderFixture.ORDER;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
@@ -14,12 +14,11 @@ public class OrderTest {
     void test1() {
         assertDoesNotThrow(() ->
                 Order.of(
-                        OrderFixture.USER_ID,
-                        OrderFixture.STORE_ID,
-                        OrderFixture.ORDER_AMOUNT,
-                        OrderFixture.ORDERED_DATE
-                )
-        );
+                        ORDER.getUserId(),
+                        ORDER.getStoreId(),
+                        ORDER.getOrderAmount(),
+                        ORDER.getOrderedDate()
+                ));
     }
 
     @Test
@@ -27,10 +26,10 @@ public class OrderTest {
     void test2() {
         assertDoesNotThrow(() ->
                 Order.of(
-                        OrderFixture.USER_ID,
-                        OrderFixture.STORE_ID,
-                        OrderFixture.ORDER_AMOUNT,
-                        OrderFixture.ORDERED_DATE
+                        ORDER.getUserId(),
+                        ORDER.getStoreId(),
+                        ORDER.getOrderAmount(),
+                        ORDER.getOrderedDate()
                 )
         );
     }
@@ -41,9 +40,9 @@ public class OrderTest {
         assertThrows(IllegalArgumentException.class,
                 () -> Order.of(
                         null,
-                        OrderFixture.STORE_ID,
-                        OrderFixture.ORDER_AMOUNT,
-                        OrderFixture.ORDERED_DATE
+                        ORDER.getStoreId(),
+                        ORDER.getOrderAmount(),
+                        ORDER.getOrderedDate()
                 ), "유저는 필수값 입니다.");
     }
 
@@ -52,10 +51,10 @@ public class OrderTest {
     void test4() {
         assertThrows(IllegalArgumentException.class,
                 () -> Order.of(
-                        OrderFixture.USER_ID,
+                        ORDER.getUserId(),
                         null,
-                        OrderFixture.ORDER_AMOUNT,
-                        OrderFixture.ORDERED_DATE
+                        ORDER.getOrderAmount(),
+                        ORDER.getOrderedDate()
                 ), "가게는 필수값 입니다.");
     }
 
@@ -64,10 +63,10 @@ public class OrderTest {
     void test5() {
         assertThrows(IllegalArgumentException.class,
                 () -> Order.of(
-                        OrderFixture.USER_ID,
-                        OrderFixture.STORE_ID,
-                        OrderFixture.ORDER_AMOUNT,
-                        OrderFixture.orderedMinusDate(1L)
+                        ORDER.getUserId(),
+                        ORDER.getStoreId(),
+                        ORDER.getOrderAmount(),
+                        ORDER.getOrderedDate().minusDays(1)
                 ), "주문이 생성된 날짜보다 이전 입니다.");
     }
 }

@@ -1,6 +1,10 @@
 package app.foodylab;
 
+import app.foodylab.user.User;
+
 public class UserFixture {
-    public static final String ID = "tottenham7";
-    public static final String NAME = "heung min son";
+    public static User USER = new User(
+            "tottenham7",
+            "heung min son"
+    );
 }
