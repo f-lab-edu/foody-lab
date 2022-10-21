@@ -1,1 +1,3 @@
 rootProject.name = 'foody-lab'
+
+include 'testFixtures'
