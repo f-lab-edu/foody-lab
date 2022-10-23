@@ -1,9 +1,9 @@
 package app.foodylab;
 
-import app.foodylab.user.User;
+import app.foodylab.user.domain.User;
 
 public class UserFixture {
-    public static User USER = new User(
+    public static final User USER = new User(
             "tottenham7",
             "heung min son"
     );

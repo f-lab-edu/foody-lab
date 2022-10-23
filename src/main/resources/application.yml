@@ -1,5 +1,5 @@
 server:
-  port: # port
+  port: 8080
 
 mybatis:
   config-location: # classpath:mapper.xml
@@ -7,7 +7,6 @@ mybatis:
 
 spring:
   datasource:
-    url: # DB url
-    username: # DB id
-    password: # DB pw
-    driver-class-name: # DB driver
+    url: jdbc:mysql://localhost:3306/sample?characterEncoding=utf8
+    username: sample_user
+    password: 123456

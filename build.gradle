@@ -20,10 +20,27 @@ repositories {
 }
 
 dependencies {
+	/*
+	* 의존성은 다음과 같은 순서로 추가했습니다.
+	* 컴파일, 런타임, 어노테이션, 테스트컴파일
+	*/
+
+	// mybatis
+	implementation group: 'org.mybatis', name: 'mybatis-spring', version: '2.0.7'
+	implementation group: 'org.mybatis', name: 'mybatis', version: '3.5.11'
+
+	implementation group: 'mysql', name: 'mysql-connector-java', version: '8.0.30'
+
+	// spring
 	implementation 'org.springframework.boot:spring-boot-starter'
+	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: '2.7.5'
+	implementation group: 'org.mybatis.spring.boot', name: 'mybatis-spring-boot-starter', version: '2.2.2'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+	// lombok
 	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'
-	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
 }
 
 tasks.named('test') {
