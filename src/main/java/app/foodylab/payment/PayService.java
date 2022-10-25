@@ -28,11 +28,7 @@ public class PayService {
 
     public void pay(Order order, String payMethod, List<Coupon> coupons) {
         PayMethod method = payMethodMap.get(payMethod);
-        long orderAmount = order.getOrderAmount();
-        for (Coupon coupon:coupons) {
-            Long discountPrice = coupon.getDiscountPrice();
-            orderAmount -= discountPrice;
-        }
-        method.pay(orderAmount);
+        long price = order.getDiscountPrice(coupons);
+        method.pay(price);
     }
 }

@@ -16,7 +16,7 @@ public class OrderTest {
                 Order.of(
                         ORDER.getUserId(),
                         ORDER.getStoreId(),
-                        ORDER.getOrderAmount(),
+                        ORDER.getOrderPrice(),
                         ORDER.getOrderedDate()
                 ));
     }
@@ -28,7 +28,7 @@ public class OrderTest {
                 Order.of(
                         ORDER.getUserId(),
                         ORDER.getStoreId(),
-                        ORDER.getOrderAmount(),
+                        ORDER.getOrderPrice(),
                         ORDER.getOrderedDate()
                 )
         );
@@ -41,7 +41,7 @@ public class OrderTest {
                 () -> Order.of(
                         null,
                         ORDER.getStoreId(),
-                        ORDER.getOrderAmount(),
+                        ORDER.getOrderPrice(),
                         ORDER.getOrderedDate()
                 ), "유저는 필수값 입니다.");
     }
@@ -53,7 +53,7 @@ public class OrderTest {
                 () -> Order.of(
                         ORDER.getUserId(),
                         null,
-                        ORDER.getOrderAmount(),
+                        ORDER.getOrderPrice(),
                         ORDER.getOrderedDate()
                 ), "가게는 필수값 입니다.");
     }
@@ -65,7 +65,7 @@ public class OrderTest {
                 () -> Order.of(
                         ORDER.getUserId(),
                         ORDER.getStoreId(),
-                        ORDER.getOrderAmount(),
+                        ORDER.getOrderPrice(),
                         ORDER.getOrderedDate().minusDays(1)
                 ), "주문이 생성된 날짜보다 이전 입니다.");
     }
