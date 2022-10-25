@@ -5,18 +5,20 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
 import app.foodylab.UserFixture;
+import app.foodylab.user.application.repository.UserRepository;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 class UserServiceTest {
 
-    UserService userService = mock(UserService.class);
+    private final UserRepository userRepository = mock(UserRepository.class);
+    private final UserService userService = new UserService(userRepository);
 
     @Test
     @DisplayName("유저 저장 테스트")
     void test1() {
         userService.saveUser(UserFixture.USER);
-        verify(userService, times(1)).saveUser(UserFixture.USER);
+        verify(userRepository, times(1)).insert(UserFixture.USER);
     }
 
 }
