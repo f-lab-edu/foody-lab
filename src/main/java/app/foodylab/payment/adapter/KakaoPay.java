@@ -13,9 +13,9 @@ public class KakaoPay implements PayMethod {
     }
 
     @Override
-    public void pay(Long amount) {
+    public void pay(Long price) {
         if (logger.isInfoEnabled()) {
-            logger.info(String.format("카카오페이로 %d원이 결제되었습니다.", amount));
+            logger.info("카카오페이로 {}원이 결제되었습니다.", price);
         }
     }
 }
