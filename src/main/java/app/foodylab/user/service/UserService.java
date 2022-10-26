@@ -11,8 +11,6 @@ import org.springframework.stereotype.Service;
 public class UserService {
     private final UserRepository userRepository;
 
-    private final UserService userService;
-
     public void saveUser(User user) {
         userRepository.insert(user);
     }
