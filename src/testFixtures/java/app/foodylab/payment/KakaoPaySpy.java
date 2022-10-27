@@ -11,7 +11,8 @@ public class KakaoPaySpy extends KakaoPay{
     }
 
     @Override
-    public void pay(long price) {
+    public boolean pay(long price) {
         isPaid = true;
+        return true;
     }
 }

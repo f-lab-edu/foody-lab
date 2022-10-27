@@ -6,7 +6,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 class KakaoPayTest {
-
     private final KakaoPay kakaoPay = new KakaoPay();
 
     @Test
@@ -18,7 +17,8 @@ class KakaoPayTest {
     @Test
     @DisplayName("카카오페이의 pay() 테스트")
     void test2() {
-        kakaoPay.pay(1000L);
+        boolean pay = kakaoPay.pay(1000L);
+        Assertions.assertTrue(pay);
     }
 
 }
