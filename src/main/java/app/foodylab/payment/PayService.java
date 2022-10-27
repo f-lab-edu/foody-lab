@@ -17,6 +17,7 @@ public class PayService {
 
     private final List<PayMethod> payMethodList;
     private Map<String, PayMethod> payMethodMap;
+    private final DiscountPriceCalculateService discountPriceCalculateService = new DiscountPriceCalculateService();
 
     @PostConstruct
     final void init() {
@@ -29,7 +30,6 @@ public class PayService {
 
     public void pay(Order order, String payMethod, List<Coupon> coupons) {
         PayMethod method = payMethodMap.get(payMethod);
-        DiscountPriceCalculateService discountPriceCalculateService = new DiscountPriceCalculateService();
         long price = discountPriceCalculateService.getPrice(order, coupons);
         method.pay(price);
     }
