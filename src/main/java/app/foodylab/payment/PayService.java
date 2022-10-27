@@ -19,7 +19,7 @@ public class PayService {
     private Map<String, PayMethod> payMethodMap;
 
     @PostConstruct
-    void init() {
+    final void init() {
         payMethodMap = payMethodList.stream().collect(Collectors.toMap(
             PayMethod::getMethod,
             payMethod -> payMethod,
