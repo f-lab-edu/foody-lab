@@ -2,6 +2,7 @@ plugins {
 	id 'org.springframework.boot' version '2.7.3'
 	id 'io.spring.dependency-management' version '1.0.13.RELEASE'
 	id 'java'
+	id "java-test-fixtures"
 }
 
 group = 'app'
@@ -19,10 +20,30 @@ repositories {
 }
 
 dependencies {
-	implementation 'org.springframework.boot:spring-boot-starter'
+	/*
+	* 의존성은 다음과 같은 순서로 추가했습니다.
+	* compile, runtimeonly, implementation
+	* testImplementation
+	*/
+
+	// h2
+	testImplementation 'com.h2database:h2:2.1.214'
+
+	// mysql
+	implementation 'mysql:mysql-connector-java:8.0.30'
+
+	// spring-starter
+	implementation 'org.springframework.boot:spring-boot-starter-web:2.7.5'
+	implementation 'org.springframework.boot:spring-boot-starter-jdbc:2.7.5'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test:2.7.5'
+
+	// mybatis
+	implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.2.2'
+
+	// lombok
 	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'
-	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
 }
 
 tasks.named('test') {
