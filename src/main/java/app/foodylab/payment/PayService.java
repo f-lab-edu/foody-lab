@@ -1,5 +1,6 @@
 package app.foodylab.payment;
 
+import app.foodylab.DiscountPriceCalculateService;
 import app.foodylab.coupon.application.Coupon;
 import app.foodylab.order.Order;
 import app.foodylab.payment.application.PayMethod;
@@ -28,7 +29,8 @@ public class PayService {
 
     public void pay(Order order, String payMethod, List<Coupon> coupons) {
         PayMethod method = payMethodMap.get(payMethod);
-        long price = order.getDiscountPrice(coupons);
+        DiscountPriceCalculateService discountPriceCalculateService = new DiscountPriceCalculateService();
+        long price = discountPriceCalculateService.getPrice(order, coupons);
         method.pay(price);
     }
 }

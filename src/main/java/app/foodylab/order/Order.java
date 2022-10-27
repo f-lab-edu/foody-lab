@@ -1,8 +1,5 @@
 package app.foodylab.order;
 
-import app.foodylab.coupon.application.Coupon;
-import java.util.List;
-import java.util.stream.Collectors;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
@@ -30,12 +27,5 @@ public class Order {
         if (predicate.test(target)) {
             throw new IllegalArgumentException(msg);
         }
-    }
-
-    public long getDiscountPrice(List<Coupon> coupons) {
-        List<Long> discountPrices = coupons.stream().map(Coupon::getDiscountPrice)
-            .collect(Collectors.toList());
-        long discountSum = discountPrices.stream().mapToLong(i -> i).sum();
-        return orderPrice - discountSum;
     }
 }
