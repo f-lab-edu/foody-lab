@@ -13,7 +13,7 @@ public class KakaoPay implements PayMethod {
     }
 
     @Override
-    public void pay(Long price) {
+    public void pay(long price) {
         if (logger.isInfoEnabled()) {
             logger.info("카카오페이로 {}원이 결제되었습니다.", price);
         }
