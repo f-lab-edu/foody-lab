@@ -1,4 +1,4 @@
-package app.foodylab.user;
+package app.foodylab.user.domain;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
