@@ -24,60 +24,19 @@ dependencies {
 	* 의존성은 다음과 같은 순서로 추가했습니다.
 	* 컴파일, 런타임, 어노테이션, 테스트컴파일
 	*/
-
-	// mybatis
-	implementation 'org.mybatis:mybatis-spring:2.0.7'
-	implementation 'org.mybatis:mybatis:3.5.11'
-	implementation 'org.mybatis.spring.boot:mybatis-spring-boot-autoconfigure:2.2.2'
-
-	// spring-boot
-	implementation 'org.springframework.boot:spring-boot-autoconfigure:2.7.5'
-	implementation 'com.zaxxer:HikariCP:5.0.1'
-	implementation 'org.springframework:spring-jdbc:5.3.23'
-
 	// h2
 	testImplementation 'com.h2database:h2:2.1.214'
 
 	// mysql
 	implementation 'mysql:mysql-connector-java:8.0.30'
 
-	// spring-web
-	implementation 'org.springframework:spring-web:5.3.23'
-	implementation 'org.springframework:spring-webmvc:5.3.23'
+	// spring-starter
+	implementation 'org.springframework.boot:spring-boot-starter-web:2.7.5'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test:2.7.5'
+	implementation 'org.springframework.boot:spring-boot-starter-jdbc:2.7.5'
 
-	// tomcat
-	implementation 'org.apache.tomcat.embed:tomcat-embed-core:10.1.1'
-	implementation 'org.apache.tomcat.embed:tomcat-embed-el:10.1.1'
-	implementation 'org.apache.tomcat.embed:tomcat-embed-websocket:10.1.1'
-
-
-	// jakarta
-	implementation 'jakarta.annotation:jakarta.annotation-api:2.1.1'
-
-	// yaml
-	implementation 'org.yaml:snakeyaml:1.33'
-
-	// log
-	implementation 'ch.qos.logback:logback-classic:1.2.11'
-	implementation 'org.apache.logging.log4j:log4j-to-slf4j:2.19.0'
-	implementation 'org.slf4j:jul-to-slf4j:2.0.3'
-
-	// fasterxml
-	implementation 'com.fasterxml.jackson.core:jackson-databind:2.14.0-rc2'
-
-	// spring
-	testImplementation 'org.springframework:spring-test:5.3.23'
-
-	// mockito
-	testImplementation 'org.mockito:mockito-junit-jupiter:4.8.1'
-	testImplementation 'org.mockito:mockito-core:4.8.1'
-
-	// junit
-	testImplementation 'org.junit.jupiter:junit-jupiter:5.9.1'
-
-	// assertJ
-	testImplementation 'org.assertj:assertj-core:3.23.1'
-	testImplementation 'org.springframework.boot:spring-boot-test:2.7.5'
+	// mybatis
+	implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.2.2'
 
 	// lombok
 	compileOnly 'org.projectlombok:lombok'
