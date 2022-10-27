@@ -1,9 +1,8 @@
-package app.foodylab.Store;
+package app.foodylab.store;
 
 public enum StoreState {
     OPEN("Y"),
-    CLOSED("N")
-    ;
+    CLOSED("N");
 
     private final String value;
 
