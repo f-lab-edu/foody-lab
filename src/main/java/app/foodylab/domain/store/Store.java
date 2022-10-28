@@ -7,6 +7,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class Store {
 
+    private final long id;
     private final String name;
     private final StoreState storeState;
     private final long minimumOrderPrice;
