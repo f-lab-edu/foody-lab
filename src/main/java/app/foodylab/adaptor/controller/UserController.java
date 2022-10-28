@@ -1,7 +1,7 @@
-package app.foodylab.user.adapter;
+package app.foodylab.adaptor.controller;
 
-import app.foodylab.user.domain.User;
-import app.foodylab.user.service.UserService;
+import app.foodylab.application.user.service.UserService;
+import app.foodylab.domain.user.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;

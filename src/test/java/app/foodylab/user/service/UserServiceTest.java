@@ -1,24 +1,29 @@
 package app.foodylab.user.service;
 
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
-
 import app.foodylab.UserFixture;
-import app.foodylab.user.adapter.infra.mybatis.UserMybatisRepository;
+import app.foodylab.adaptor.mapper.UserMapper;
+import app.foodylab.application.user.service.UserService;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 
+@SpringBootTest
 class UserServiceTest {
 
-    private final UserMybatisRepository userRepository = mock(UserMybatisRepository.class);
-    private final UserService userService = new UserService(userRepository);
+//    private final UserMapper userRepository = mock(UserMapper.class);
+//    private final UserService userService = new UserService(userRepository);
+
+    @Autowired
+    private UserMapper userRepository;
 
     @Test
     @DisplayName("유저 저장 테스트")
     void test1() {
+        UserService userService = new UserService(userRepository);
         userService.saveUser(UserFixture.USER);
-        verify(userRepository, times(1)).insert(UserFixture.USER);
+//        userService.saveUser(UserFixture.USER);
+//        verify(userRepository, times(1)).userInsert(UserFixture.USER);
     }
 
 }

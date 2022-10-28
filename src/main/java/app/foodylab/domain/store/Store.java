@@ -1,4 +1,4 @@
-package app.foodylab.store;
+package app.foodylab.domain.store;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;

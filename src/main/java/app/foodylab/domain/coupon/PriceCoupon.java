@@ -1,9 +1,8 @@
-package app.foodylab.coupon.domain;
-
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
+package app.foodylab.domain.coupon;
 
 import java.time.LocalDate;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 @Getter
@@ -29,6 +28,8 @@ public class PriceCoupon {
     }
 
     private static void require(Boolean condition, String msg) {
-        if (Boolean.FALSE.equals(condition)) throw new IllegalArgumentException(msg);
+        if (Boolean.FALSE.equals(condition)) {
+            throw new IllegalArgumentException(msg);
+        }
     }
 }

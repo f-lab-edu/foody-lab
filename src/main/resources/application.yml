@@ -1,12 +1,8 @@
 server:
   port: 8080
 
-mybatis:
-  type-aliases-package: app.foodylab
-  mapper-locations: classpath:mybatis/mapper/**/*.xml
-
 spring:
   datasource:
     url: jdbc:mysql://localhost:3308/sample?characterEncoding=utf8
-    username: sample_user
+    username: aa
     password: 123456
