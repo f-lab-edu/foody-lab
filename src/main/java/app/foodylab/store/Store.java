@@ -9,5 +9,5 @@ public class Store {
 
     private final String name;
     private final StoreState storeState;
-    private final long minimumOrderAmount;
+    private final long minimumOrderPrice;
 }
