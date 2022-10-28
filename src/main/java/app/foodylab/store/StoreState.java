@@ -1,16 +1,14 @@
 package app.foodylab.store;
 
+import lombok.AccessLevel;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+
+@Getter
+@RequiredArgsConstructor(access = AccessLevel.PRIVATE)
 public enum StoreState {
-    OPEN("Y"),
-    CLOSED("N");
+    OPEN("OPEN"),
+    CLOSED("CLOSE");
 
     private final String value;
-
-    StoreState(String value) {
-        this.value = value;
-    }
-
-    public String getValue() {
-        return value;
-    }
 }
