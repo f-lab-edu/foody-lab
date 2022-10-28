@@ -4,9 +4,9 @@ import app.foodylab.adaptor.mapper.UserMapper;
 import app.foodylab.domain.user.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Primary;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Repository;
 
-@Service
+@Repository
 @Primary
 @RequiredArgsConstructor
 public class UserMybatisRepository implements UserMapper {
