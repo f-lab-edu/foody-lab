@@ -1,4 +1,4 @@
-package app.foodylab.adaptor.mapper;
+package app.foodylab.adaptor.infra.mapper;
 
 import app.foodylab.domain.user.User;
 

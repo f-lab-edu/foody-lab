@@ -1,4 +1,4 @@
-package app.foodylab.user.service;
+package app.foodylab.application.user;
 
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.times;

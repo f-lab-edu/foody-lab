@@ -1,9 +1,9 @@
-package app.foodylab.payment;
+package app.foodylab.application.payment.service;
 
-import app.foodylab.DiscountPriceCalculateService;
-import app.foodylab.coupon.application.Coupon;
-import app.foodylab.order.Order;
-import app.foodylab.payment.application.PayMethod;
+import app.foodylab.application.coupon.Coupon;
+import app.foodylab.application.payment.PayMethod;
+import app.foodylab.domain.order.Order;
+import app.foodylab.domain.payment.DiscountPriceCalculateService;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -16,8 +16,8 @@ import org.springframework.stereotype.Service;
 public class PayService {
 
     private final List<PayMethod> payMethodList;
-    private Map<String, PayMethod> payMethodMap;
     private final DiscountPriceCalculateService discountPriceCalculateService = new DiscountPriceCalculateService();
+    private Map<String, PayMethod> payMethodMap;
 
     @PostConstruct
     final void init() {

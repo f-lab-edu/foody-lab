@@ -1,6 +1,7 @@
-package app.foodylab.payment;
+package app.foodylab.application.payment.service;
 
 import app.foodylab.OrderFixture;
+import app.foodylab.payment.KakaoPaySpy;
 import java.util.Collections;
 import java.util.List;
 import org.junit.jupiter.api.Assertions;

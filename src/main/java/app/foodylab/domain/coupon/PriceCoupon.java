@@ -1,9 +1,8 @@
-package app.foodylab.coupon.domain;
+package app.foodylab.domain.coupon;
 
-import app.foodylab.coupon.application.Coupon;
-import lombok.RequiredArgsConstructor;
-
+import app.foodylab.application.coupon.Coupon;
 import java.time.LocalDate;
+import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 public class PriceCoupon implements Coupon {
@@ -18,7 +17,8 @@ public class PriceCoupon implements Coupon {
         return of(discountPrice, now, now.plusYears(1));
     }
 
-    public static PriceCoupon of(final long discountPrice, final LocalDate startDate, final LocalDate endDate) {
+    public static PriceCoupon of(final long discountPrice, final LocalDate startDate,
+        final LocalDate endDate) {
         LocalDate now = LocalDate.now();
         require(discountPrice > 0, "할인 금액은 0보다 커야 합니다.");
         require(!startDate.isBefore(now), "쿠폰 사용 시작일은 현재보다 이전일 수 없습니다.");
@@ -28,7 +28,9 @@ public class PriceCoupon implements Coupon {
     }
 
     private static void require(final boolean condition, final String msg) {
-        if (Boolean.FALSE.equals(condition)) throw new IllegalArgumentException(msg);
+        if (Boolean.FALSE.equals(condition)) {
+            throw new IllegalArgumentException(msg);
+        }
     }
 
     @Override

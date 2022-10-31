@@ -1,5 +1,6 @@
-package app.foodylab.coupon.application;
+package app.foodylab.application.coupon;
 
 public interface Coupon {
+
     long getDiscountPrice();
 }

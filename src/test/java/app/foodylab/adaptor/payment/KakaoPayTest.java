@@ -1,11 +1,11 @@
-package app.foodylab.payment;
+package app.foodylab.adaptor.payment;
 
-import app.foodylab.payment.adapter.KakaoPay;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 class KakaoPayTest {
+
     private final KakaoPay kakaoPay = new KakaoPay();
 
     @Test

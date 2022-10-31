@@ -1,7 +1,7 @@
-package app.foodylab.payment.adapter;
+package app.foodylab.adaptor.payment;
 
-import app.foodylab.payment.application.ExternalPayAPI;
-import app.foodylab.payment.application.PayMethod;
+import app.foodylab.application.payment.ExternalPayAPI;
+import app.foodylab.application.payment.PayMethod;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

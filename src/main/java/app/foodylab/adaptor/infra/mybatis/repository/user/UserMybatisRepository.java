@@ -1,6 +1,6 @@
 package app.foodylab.adaptor.infra.mybatis.repository.user;
 
-import app.foodylab.adaptor.mapper.UserMapper;
+import app.foodylab.adaptor.infra.mapper.UserMapper;
 import app.foodylab.domain.user.User;
 import app.foodylab.domain.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;

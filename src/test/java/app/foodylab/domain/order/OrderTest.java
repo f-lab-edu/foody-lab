@@ -1,4 +1,9 @@
-package app.foodylab.order;
+package app.foodylab.domain.order;
+
+import static app.foodylab.OrderFixture.ORDER;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.time.LocalDate;
 import java.util.stream.Stream;
@@ -8,18 +13,26 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
-import static app.foodylab.OrderFixture.ORDER;
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-
 class OrderTest {
+
+    private static Stream<Arguments> argumentsStream1() {
+        LocalDate now = LocalDate.now();
+        return Stream.of(
+            Arguments.of("Order 클래스의 of 메소드 테스트, 주문 하려고 하는 유저가 없으면 주문 생성이 안된다.", 1L, null,
+                "storeId",
+                10000L, now,
+                "유저는 필수값 입니다."),
+            Arguments.of("주문 하려고 하는 가게가 없으면 주문 생성이 안된다.", 1L, "userId", null, 10000L, now,
+                "가게는 필수값 입니다.")
+        );
+    }
 
     @Test
     @DisplayName("주문 최소 수량 이상 이면 주문이 된다.")
     void test1() {
         assertDoesNotThrow(() ->
             Order.of(
+                ORDER.getId(),
                 ORDER.getUserId(),
                 ORDER.getStoreId(),
                 ORDER.getOrderPrice(),
@@ -32,6 +45,7 @@ class OrderTest {
     void test2() {
         assertDoesNotThrow(() ->
             Order.of(
+                ORDER.getId(),
                 ORDER.getUserId(),
                 ORDER.getStoreId(),
                 ORDER.getOrderPrice(),
@@ -44,7 +58,7 @@ class OrderTest {
     @DisplayName("Order 클래스의 of 메소드 테스트, 주문 하려고 하는 유저가 없으면 주문 생성이 안된다.")
     void test3() {
         IllegalArgumentException e = assertThrows(IllegalArgumentException.class,
-            () -> Order.of(null, "store_id", 1000L, LocalDate.now()));
+            () -> Order.of(1L, null, "store_id", 1000L, LocalDate.now()));
         assertThat(e.getMessage()).isEqualTo("유저는 필수값 입니다.");
     }
 
@@ -52,7 +66,7 @@ class OrderTest {
     @DisplayName("주문 하려고 하는 가게가 없으면 주문 생성이 안된다.")
     void test4() {
         IllegalArgumentException e = assertThrows(IllegalArgumentException.class,
-            () -> Order.of("user_id", null, 10000L, LocalDate.now()));
+            () -> Order.of(1L, "user_id", null, 10000L, LocalDate.now()));
         assertThat(e.getMessage()).isEqualTo("가게는 필수값 입니다.");
     }
 
@@ -62,6 +76,7 @@ class OrderTest {
         IllegalArgumentException e = assertThrows(
             IllegalArgumentException.class,
             () -> Order.of(
+                1L,
                 "user_id",
                 "store_id",
                 10000L,
@@ -72,21 +87,10 @@ class OrderTest {
 
     @ParameterizedTest(name = "{index}: {0}")
     @MethodSource("argumentsStream1")
-    void test6(String description, String userId, String storeId, long orderPrice,
+    void test6(String description, long id, String userId, String storeId, long orderPrice,
         LocalDate orderDate, String errorMsg) {
         IllegalArgumentException e = assertThrows(IllegalArgumentException.class,
-            () -> Order.of(userId, storeId, orderPrice, orderDate));
+            () -> Order.of(id, userId, storeId, orderPrice, orderDate));
         assertThat(e.getMessage()).isEqualTo(errorMsg);
-    }
-
-    private static Stream<Arguments> argumentsStream1() {
-        LocalDate now = LocalDate.now();
-        return Stream.of(
-            Arguments.of("Order 클래스의 of 메소드 테스트, 주문 하려고 하는 유저가 없으면 주문 생성이 안된다.", null, "storeId",
-                10000L, now,
-                "유저는 필수값 입니다."),
-            Arguments.of("주문 하려고 하는 가게가 없으면 주문 생성이 안된다.", "userId", null, 10000L, now,
-                "가게는 필수값 입니다.")
-        );
     }
 }
