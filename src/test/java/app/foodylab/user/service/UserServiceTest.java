@@ -5,14 +5,14 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
 import app.foodylab.UserFixture;
-import app.foodylab.adaptor.mapper.UserMapper;
 import app.foodylab.application.user.service.UserService;
+import app.foodylab.domain.user.repository.UserRepository;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 class UserServiceTest {
 
-    private final UserMapper userRepository = mock(UserMapper.class);
+    private final UserRepository userRepository = mock(UserRepository.class);
     private final UserService userService = new UserService(userRepository);
 
     @Test
