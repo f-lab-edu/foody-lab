@@ -12,7 +12,7 @@ public class Order {
     private final long id;
     private final String userId;
     private final String storeId;
-    private final long orderAmount;
+    private final long orderPrice;
     private final LocalDate orderedDate;
 
     public static Order of(long id, String userId, String storeId, long orderAmount,
