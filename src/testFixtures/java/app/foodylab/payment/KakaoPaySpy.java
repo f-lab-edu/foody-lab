@@ -1,8 +1,8 @@
 package app.foodylab.payment;
 
-import app.foodylab.payment.adapter.KakaoPay;
+import app.foodylab.adaptor.payment.KakaoPay;
 
-public class KakaoPaySpy extends KakaoPay{
+public class KakaoPaySpy extends KakaoPay {
 
     private boolean isPaid = false;
 

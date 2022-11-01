@@ -1,12 +1,8 @@
 server:
   port: 8080
 
-mybatis:
-  config-location: # classpath:mapper.xml
-  mapper-locations: # classpath:FoodyLabDao.xml
-
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/sample?characterEncoding=utf8
-    username: sample_user
+    url: jdbc:mysql://localhost:3308/sample?characterEncoding=utf8
+    username: aa
     password: 123456

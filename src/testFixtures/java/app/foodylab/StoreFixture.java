@@ -1,12 +1,14 @@
 package app.foodylab;
 
-import app.foodylab.Store.Store;
-import app.foodylab.Store.StoreState;
+import app.foodylab.domain.store.Store;
+import app.foodylab.domain.store.StoreState;
 
 public class StoreFixture {
+
     public static Store STORE = new Store(
-            "BAQ",
-            StoreState.OPEN,
-            15000L
+        1,
+        "BAQ",
+        StoreState.OPEN,
+        15000L
     );
 }
