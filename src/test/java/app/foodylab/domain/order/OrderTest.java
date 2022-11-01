@@ -6,7 +6,8 @@ import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.time.LocalDate;
-import java.util.stream.Stream;
+import java.util.ArrayList;
+import java.util.Collection;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -15,16 +16,21 @@ import org.junit.jupiter.params.provider.MethodSource;
 
 class OrderTest {
 
-    private static Stream<Arguments> argumentsStream1() {
+    private static Collection<Arguments> argumentsStream1() {
         LocalDate now = LocalDate.now();
-        return Stream.of(
+        Collection<Arguments> list = new ArrayList<>();
+        list.add(
             Arguments.of("Order 클래스의 of 메소드 테스트, 주문 하려고 하는 유저가 없으면 주문 생성이 안된다.", 1L, null,
                 "storeId",
                 10000L, now,
-                "유저는 필수값 입니다."),
+                "유저는 필수값 입니다.")
+        );
+        list.add(
             Arguments.of("주문 하려고 하는 가게가 없으면 주문 생성이 안된다.", 1L, "userId", null, 10000L, now,
                 "가게는 필수값 입니다.")
         );
+
+        return list;
     }
 
     @Test

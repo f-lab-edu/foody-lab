@@ -8,7 +8,7 @@ public class StoreFixture {
     public static Store STORE = new Store(
         1,
         "BAQ",
-        StoreState.OPEN,
+        StoreState.valueOf("OPEN"),
         15000L
     );
 }

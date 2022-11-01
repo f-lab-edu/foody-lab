@@ -14,7 +14,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @MapperScan(basePackages = "app.foodylab.adaptor.mapper")
 @RequiredArgsConstructor
-public class DatabaseConfig {
+public class MybatisConfig {
 
     private final ApplicationContext applicationContext;
 
