@@ -28,7 +28,7 @@ public class PriceCoupon implements Coupon {
     }
 
     private static void require(final boolean condition, final String msg) {
-        if (Boolean.FALSE.equals(condition)) {
+        if (!condition) {
             throw new IllegalArgumentException(msg);
         }
     }
