@@ -5,7 +5,7 @@
 <mapper namespace="app.foodylab.adaptor.infra.mapper.UserMapper">
 
   <insert id="userInsert" parameterType="app.foodylab.domain.user.User">
-    INSERT INTO user
+    INSERT INTO t_user
       (name)
     VALUES
       (#{name});

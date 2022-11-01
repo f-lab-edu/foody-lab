@@ -2,6 +2,8 @@ server:
   port: 8080
 
 spring:
+  profiles:
+    active: test
   h2:
     console:
       enabled: true
@@ -9,5 +11,10 @@ spring:
   datasource:
     driver-class-name: org.h2.Driver
     url: jdbc:h2:mem:FoodyLab-for-test;MODE=MYSQL;
-    username: aa
+    username: sa
+    password:
+  flyway:
+    enabled: true
+    encoding: UTF-8
+    user: sa
     password:
