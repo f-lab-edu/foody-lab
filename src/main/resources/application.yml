@@ -6,3 +6,8 @@ spring:
     url: jdbc:mysql://localhost:3308/sample?characterEncoding=utf8
     username: aa
     password: 123456
+  flyway:
+    user: aa
+    password: 123456
+    url: jdbc:mysql://localhost:3308/sample?characterEncoding=utf8
+    driver-class-name: com.mysql.cj.jdbc.Driver

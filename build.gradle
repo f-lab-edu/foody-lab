@@ -27,7 +27,7 @@ dependencies {
 	*/
 
 	// h2
-	testImplementation 'com.h2database:h2:2.1.214'
+	testRuntimeOnly 'com.h2database:h2'
 
 	// mysql
 	implementation 'mysql:mysql-connector-java:8.0.30'
@@ -43,6 +43,9 @@ dependencies {
 	// lombok
 	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'
+
+	// flyway
+	implementation 'org.flywaydb:flyway-mysql'
 
 }
 
