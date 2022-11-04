@@ -1,11 +1,12 @@
 package app.foodylab.adaptor.payment;
 
 import java.time.LocalDate;
+import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
 @Getter
-@RequiredArgsConstructor
+@RequiredArgsConstructor(access = AccessLevel.PACKAGE)
 public class KakaoPayResponse {
 
     private final String responseCode;
