@@ -6,7 +6,7 @@ import lombok.RequiredArgsConstructor;
 
 @Getter
 @RequiredArgsConstructor
-public class KakaoPayResp {
+public class KakaoPayResponse {
 
     private final String responseCode;
     private final long price;

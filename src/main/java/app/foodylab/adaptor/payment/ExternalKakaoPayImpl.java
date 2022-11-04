@@ -8,7 +8,7 @@ public class ExternalKakaoPayImpl implements ExternalPayAPI {
 
     @Override
     public boolean processPay(Order order) {
-        KakaoPayResp kakaoPayResp = approvePay(order);
+        KakaoPayResponse kakaoPayResp = approvePay(order);
         String responseCode = kakaoPayResp.getResponseCode();
         return requestPay() && isApproved(responseCode);
     }
@@ -21,13 +21,13 @@ public class ExternalKakaoPayImpl implements ExternalPayAPI {
         return true;
     }
 
-    private KakaoPayResp approvePay(Order order) {
+    private KakaoPayResponse approvePay(Order order) {
         try {
             Thread.sleep(1000);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
         LocalDate now = LocalDate.now();
-        return new KakaoPayResp("200", order.getOrderPrice(), "id", now, now);
+        return new KakaoPayResponse("200", order.getOrderPrice(), "id", now, now);
     }
 }
