@@ -7,7 +7,7 @@ import lombok.RequiredArgsConstructor;
 
 @Getter
 @RequiredArgsConstructor(access = AccessLevel.PACKAGE)
-public class KakaoPayResponse {
+public class PayResponse {
 
     private final String responseCode;
     private final long price;

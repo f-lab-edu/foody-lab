@@ -16,7 +16,7 @@ public class DiscountPriceCalculateService {
     public Order getOrder(Order order, List<Coupon> coupons) {
         long totalDiscount = getDiscountSum(coupons);
         long price = order.getOrderPrice() - totalDiscount;
-        return Order.of(null, order.getCustomerId(), order.getStoreId(), price, order.getOrderedDate());
+        return Order.of(order.getCustomerId(), order.getStoreId(), price, order.getOrderedDate());
     }
 
 }

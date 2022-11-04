@@ -19,7 +19,7 @@ class KakaoPayTest {
     @Test
     @DisplayName("카카오페이의 pay() 테스트")
     void test2() {
-        boolean pay = kakaoPay.pay(Order.of(null, "1", "2", 1000L, LocalDate.now()));
+        boolean pay = kakaoPay.pay(Order.of("1", "2", 1000L, LocalDate.now()));
         Assertions.assertTrue(pay);
     }
 

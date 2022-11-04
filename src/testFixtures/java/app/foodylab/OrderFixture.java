@@ -5,8 +5,7 @@ import java.time.LocalDate;
 
 public class OrderFixture {
 
-    public static Order ORDER = new Order(
-        1L,
+    public static Order DUMMY = new Order(
         "1",
         "1",
         15000L,
