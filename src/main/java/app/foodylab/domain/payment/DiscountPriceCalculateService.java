@@ -1,7 +1,7 @@
 package app.foodylab.domain.payment;
 
 import app.foodylab.application.coupon.Coupon;
-import app.foodylab.domain.order.Order;
+import app.foodylab.domain.coupon.CouponType;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -13,9 +13,11 @@ public class DiscountPriceCalculateService {
         return discountPrices.stream().mapToLong(i -> i).sum();
     }
 
-    public long getPrice(Order order, List<Coupon> coupons) {
-        long totalDiscount = getDiscountSum(coupons);
-        return order.getOrderPrice() - totalDiscount;
+    public long getPrice(List<Coupon> coupons) {
+        List<Coupon> priceCoupons = coupons.stream()
+            .filter(s -> CouponType.PRICE.equals(s.getCouponType()))
+            .collect(Collectors.toList());
+        long totalDiscount = getDiscountSum(priceCoupons);
+        return totalDiscount;
     }
-
 }

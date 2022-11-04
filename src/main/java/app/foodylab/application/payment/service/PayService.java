@@ -30,7 +30,7 @@ public class PayService {
 
     public void pay(Order order, String payMethod, List<Coupon> coupons) {
         PayMethod method = payMethodMap.get(payMethod);
-        long price = discountPriceCalculateService.getPrice(order, coupons);
+        long price = discountPriceCalculateService.getPrice(coupons);
         method.pay(price);
     }
 }
