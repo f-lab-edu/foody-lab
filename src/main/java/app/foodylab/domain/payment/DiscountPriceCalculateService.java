@@ -13,7 +13,7 @@ public class DiscountPriceCalculateService {
         return discountPrices.stream().mapToLong(i -> i).sum();
     }
 
-    public Order getPrice(Order order, List<Coupon> coupons) {
+    public Order getOrder(Order order, List<Coupon> coupons) {
         long totalDiscount = getDiscountSum(coupons);
         long price = order.getOrderPrice() - totalDiscount;
         return Order.of(null, order.getCustomerId(), order.getStoreId(), price, order.getOrderedDate());
