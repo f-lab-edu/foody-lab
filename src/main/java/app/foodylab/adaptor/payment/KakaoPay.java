@@ -2,6 +2,7 @@ package app.foodylab.adaptor.payment;
 
 import app.foodylab.application.payment.ExternalPayAPI;
 import app.foodylab.application.payment.PayMethod;
+import app.foodylab.domain.order.Order;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -16,10 +17,10 @@ public class KakaoPay implements PayMethod {
     }
 
     @Override
-    public boolean pay(long price) {
-        boolean isPaid = payAPI.processPay(price);
+    public boolean pay(Order order) {
+        boolean isPaid = payAPI.processPay(order);
         if (isPaid && logger.isInfoEnabled()) {
-            logger.info("카카오페이로 {}원이 결제되었습니다.", price);
+            logger.info("카카오페이로 {}원이 결제되었습니다.", order.getOrderPrice());
         }
         return isPaid;
     }
