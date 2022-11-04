@@ -1,6 +1,7 @@
 package app.foodylab.adaptor.controller;
 
 import app.foodylab.adaptor.OrderDto;
+import app.foodylab.adaptor.OrderRequest;
 import app.foodylab.application.coupon.Coupon;
 import app.foodylab.application.payment.service.PayService;
 import java.util.List;
@@ -14,7 +15,7 @@ public class Ordercontroller {
 
     private final PayService payService;
 
-    public void requestOrder(@RequestBody OrderDto orderDto, String payMethod, List<Coupon> coupons) {
-        payService.pay(orderDto, payMethod, coupons);
+    public void requestOrder(@RequestBody OrderRequest orderRequest) {
+        payService.pay(orderRequest.getOrderDto(), orderRequest.getPayMethod(), orderRequest.getCoupons());
     }
 }
