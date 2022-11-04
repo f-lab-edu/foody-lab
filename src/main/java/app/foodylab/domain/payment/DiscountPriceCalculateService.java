@@ -7,15 +7,16 @@ import java.util.stream.Collectors;
 
 public class DiscountPriceCalculateService {
 
-    private static long getDiscountSum(List<Coupon> coupons) {
+    private long getDiscountSum(List<Coupon> coupons) {
         List<Long> discountPrices = coupons.stream().map(Coupon::getDiscountPrice)
             .collect(Collectors.toList());
         return discountPrices.stream().mapToLong(i -> i).sum();
     }
 
-    public long getPrice(Order order, List<Coupon> coupons) {
+    public Order getPrice(Order order, List<Coupon> coupons) {
         long totalDiscount = getDiscountSum(coupons);
-        return order.getOrderPrice() - totalDiscount;
+        long price = order.getOrderPrice() - totalDiscount;
+        return Order.of(null, order.getCustomerId(), order.getStoreId(), price, order.getOrderedDate());
     }
 
 }
