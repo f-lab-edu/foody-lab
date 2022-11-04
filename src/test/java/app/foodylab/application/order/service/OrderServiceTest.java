@@ -75,4 +75,21 @@ class OrderServiceTest {
         assertThat(actual.getStoreId()).isEqualTo("2");
         assertThat(actual.getOrderPrice()).isEqualTo(10750L);
     }
+
+    @Test
+    @DisplayName("할인 쿠폰을 적용 후 음수가 되면 최종 주문 가격은 0이 된다.")
+    void test4() {
+        List<Coupon> couponList = new ArrayList<>();
+        couponList.add(PriceCoupon.of(1000L));
+        couponList.add(PriceCoupon.of(1000L));
+        couponList.add(RateCoupon.of(10L));
+        couponList.add(RateCoupon.of(90L));
+
+        Order actual = sut.order("1", "2", 15000L, couponList);
+
+        assertThat(actual).isNotNull();
+        assertThat(actual.getCustomerId()).isEqualTo("1");
+        assertThat(actual.getStoreId()).isEqualTo("2");
+        assertThat(actual.getOrderPrice()).isEqualTo(0);
+    }
 }

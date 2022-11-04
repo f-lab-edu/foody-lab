@@ -38,13 +38,18 @@ public class OrderService {
             );
     }
 
-    public Order order(String customerId, String storeId, long price, @Nullable List<Coupon> coupons) {
+    public Order order(String customerId, String storeId, long price,
+        @Nullable List<Coupon> coupons) {
         long finalPrice = 0;
         for (Coupon coupon : coupons) {
-            CouponDiscountPolicy couponDiscountPolicy = couponServiceEnumMap.get(coupon.getCouponType());
+            CouponDiscountPolicy couponDiscountPolicy = couponServiceEnumMap.get(
+                coupon.getCouponType());
             finalPrice += couponDiscountPolicy.getCalculatedDiscountPrice(coupon, price);
         }
         long calculatedFinalPrice = price - finalPrice;
+        if (calculatedFinalPrice < 0) {
+            calculatedFinalPrice = 0;
+        }
 
         logger.info("주문 완료, 가격: {}", calculatedFinalPrice);
         return Order.of(null, customerId, storeId, calculatedFinalPrice, LocalDate.now());
