@@ -37,4 +37,9 @@ public class PriceCoupon implements Coupon {
     public long getDiscountPrice() {
         return discountPrice;
     }
+
+    @Override
+    public CouponType getCouponType() {
+        return CouponType.PRICE;
+    }
 }
