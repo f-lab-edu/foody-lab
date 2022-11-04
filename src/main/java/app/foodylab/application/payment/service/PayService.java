@@ -1,6 +1,8 @@
 package app.foodylab.application.payment.service;
 
+import app.foodylab.adaptor.OrderDTO;
 import app.foodylab.application.coupon.Coupon;
+import app.foodylab.application.order.mapper.OrderMapper;
 import app.foodylab.application.payment.PayMethod;
 import app.foodylab.domain.order.Order;
 import app.foodylab.domain.payment.DiscountPriceCalculateService;
@@ -18,6 +20,7 @@ public class PayService {
     private final List<PayMethod> payMethodList;
     private final DiscountPriceCalculateService discountPriceCalculateService = new DiscountPriceCalculateService();
     private Map<String, PayMethod> payMethodMap;
+    private OrderMapper orderMapper = OrderMapper.INSTANCE;
 
     @PostConstruct
     final void init() {
@@ -28,7 +31,8 @@ public class PayService {
         ));
     }
 
-    public void pay(Order order, String payMethod, List<Coupon> coupons) {
+    public void pay(OrderDTO orderDTO, String payMethod, List<Coupon> coupons) {
+        Order order = orderMapper.toOrder(orderDTO);
         PayMethod method = payMethodMap.get(payMethod);
         long price = discountPriceCalculateService.getPrice(order, coupons);
         method.pay(price);
