@@ -1,5 +1,7 @@
 package app.foodylab.adaptor.payment;
 
+import app.foodylab.domain.order.Order;
+import java.time.LocalDate;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -17,7 +19,7 @@ class KakaoPayTest {
     @Test
     @DisplayName("카카오페이의 pay() 테스트")
     void test2() {
-        boolean pay = kakaoPay.pay(1000L);
+        boolean pay = kakaoPay.pay(Order.of(null, "1", "2", 1000L, LocalDate.now()));
         Assertions.assertTrue(pay);
     }
 
