@@ -1,33 +1,21 @@
 package app.foodylab.adaptor.payment;
 
-import app.foodylab.application.payment.ExternalPayAPI;
-import app.foodylab.domain.order.Order;
+import app.foodylab.application.payment.ExternalPayApi;
+import app.foodylab.domain.payment.PayApproveRequest;
+import app.foodylab.domain.payment.PayApproveResponse;
+import app.foodylab.domain.payment.PayReadyRequest;
+import app.foodylab.domain.payment.PayReadyResponse;
 import java.time.LocalDate;
 
-public class ExternalKakaoPayImpl implements ExternalPayAPI {
+public class ExternalKakaoPayImpl implements ExternalPayApi {
 
     @Override
-    public boolean processPay(Order order) {
-        PayResponse kakaoPayResp = approvePay(order);
-        String responseCode = kakaoPayResp.getResponseCode();
-        return requestPay() && isApproved(responseCode);
+    public PayReadyResponse readyPay(PayReadyRequest payReady) {
+        return new PayReadyResponse("transactionId", "nextUrl", LocalDate.now());
     }
 
-    private boolean isApproved(String responseCode) {
-        return "200".equals(responseCode);
-    }
-
-    private boolean requestPay() {
-        return true;
-    }
-
-    private PayResponse approvePay(Order order) {
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
-        LocalDate now = LocalDate.now();
-        return new PayResponse("200", order.getOrderPrice(), "id", now, now);
+    @Override
+    public PayApproveResponse approvePay(PayApproveRequest request) {
+        return new PayApproveResponse("requestId", "storeCode", "transactionId", "orderId", "storeId");
     }
 }

@@ -1,10 +1,10 @@
 package app.foodylab.application.payment;
 
-import app.foodylab.domain.order.Order;
+import app.foodylab.domain.payment.PayReadyRequest;
 
 public interface PayMethod {
 
     String getMethod();
 
-    boolean pay(Order order);
+    boolean pay(PayReadyRequest request);
 }

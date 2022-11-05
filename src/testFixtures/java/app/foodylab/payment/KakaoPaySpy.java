@@ -1,7 +1,7 @@
 package app.foodylab.payment;
 
 import app.foodylab.adaptor.payment.KakaoPay;
-import app.foodylab.domain.order.Order;
+import app.foodylab.domain.payment.PayReadyRequest;
 
 public class KakaoPaySpy extends KakaoPay {
 
@@ -12,8 +12,8 @@ public class KakaoPaySpy extends KakaoPay {
     }
 
     @Override
-    public boolean pay(Order order) {
+    public boolean pay(PayReadyRequest readyRequest) {
         isPaid = true;
-        return true;
+        return super.pay(readyRequest);
     }
 }
