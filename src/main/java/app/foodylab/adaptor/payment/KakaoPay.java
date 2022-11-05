@@ -33,7 +33,6 @@ public class KakaoPay implements PayMethod {
     }
 
     private PayApproveResponse getPayApproveResponse(PayApproveRequest approveRequest) {
-        PayApproveResponse payApproveResponse = payApi.approvePay(approveRequest);
-        return payApproveResponse;
+        return payApi.approvePay(approveRequest);
     }
 }
