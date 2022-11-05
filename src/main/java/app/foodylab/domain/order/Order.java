@@ -17,11 +17,7 @@ public class Order {
 
     public static Order of(String customerId, String storeId, long orderAmount,
         LocalDate orderedDate) {
-        require(ifOrderBeforeDate -> orderedDate.isBefore(LocalDate.now()), orderedDate,
-            "주문이 생성된 날짜보다 이전 입니다.");
-        require(ifNotStore -> storeId == null, storeId, "가게는 필수값 입니다.");
-        require(ifNotCustomer -> customerId == null, customerId, "고객은 필수값 입니다.");
-        return new Order(customerId, storeId, orderAmount, orderedDate);
+        return of(-1L, customerId, storeId, orderAmount, orderedDate);
     }
 
     public static Order of(long id, String customerId, String storeId, long orderAmount,
