@@ -16,6 +16,6 @@ public class ExternalKakaoPayImpl implements ExternalPayApi {
 
     @Override
     public PayApproveResponse approvePay(PayApproveRequest request) {
-        return new PayApproveResponse("requestId", "storeCode", "transactionId", "orderId", "storeId");
+        return new PayApproveResponse("requestId", "transactionId", "orderId", "storeId");
     }
 }
