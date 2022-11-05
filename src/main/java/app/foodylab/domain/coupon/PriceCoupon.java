@@ -34,7 +34,7 @@ public class PriceCoupon implements Coupon {
     }
 
     @Override
-    public long getDiscountPrice() {
-        return discountPrice;
+    public long getDiscountPrice(long originPrice) {
+        return originPrice - discountPrice;
     }
 }
