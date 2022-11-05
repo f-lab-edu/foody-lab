@@ -18,7 +18,8 @@ class KakaoPayTest {
     @Test
     @DisplayName("카카오페이의 pay() 테스트")
     void test2() {
-        PayReadyRequest payRequest = new PayReadyRequest(15000L, "appr", "cancel", "fail", "storeId", "orderId");
+        PayReadyRequest payRequest = new PayReadyRequest(15000L, "storeId", "orderId");
+        payRequest.setToken("/token");
         boolean pay = kakaoPay.pay(payRequest);
         Assertions.assertTrue(pay);
     }

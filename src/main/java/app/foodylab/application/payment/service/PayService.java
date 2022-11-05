@@ -31,6 +31,7 @@ public class PayService {
         PayMethod method = payMethodMap.get(payMethod);
         long discountPrice = coupon.getDiscountPrice(order.getOrderPrice());
         PayReadyRequest payRequest = new PayReadyRequest(discountPrice, order.getStoreId(), order.getId());
+        payRequest.setToken(order.getId());
         method.pay(payRequest);
     }
 }
