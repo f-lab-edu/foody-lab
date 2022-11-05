@@ -8,10 +8,15 @@ import lombok.RequiredArgsConstructor;
 @Getter
 public class PayReadyRequest {
     private final long price;
-    private final String approvalUrl;
-    private final String cancelUrl;
-    private final String failUrl;
-    private final String storeCode;
+    private String approvelUrl = "/approve";
+    private String cancelUrl = "/cancel";
+    private String failUrl = "/fail";
     private final String storeId;
     private final String orderId;
+
+    public void setToken(String token) {
+        approvelUrl += token;
+        cancelUrl += token;
+        failUrl += token;
+    }
 }

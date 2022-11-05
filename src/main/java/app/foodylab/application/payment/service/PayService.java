@@ -30,7 +30,7 @@ public class PayService {
     public void pay(Order order, String payMethod, Coupon coupon) {
         PayMethod method = payMethodMap.get(payMethod);
         long discountPrice = coupon.getDiscountPrice(order.getOrderPrice());
-        PayReadyRequest payRequest = new PayReadyRequest(discountPrice, "appr", "cancel", "fail", "storId", "storeId", "orderId");
+        PayReadyRequest payRequest = new PayReadyRequest(discountPrice, order.getStoreId(), order.getId());
         method.pay(payRequest);
     }
 }

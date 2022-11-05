@@ -7,6 +7,5 @@ import lombok.RequiredArgsConstructor;
 public class PayApproveRequest {
     private final String orderId;
     private final String storeId;
-    private final String storeCode;
     private final String transactionId;
 }

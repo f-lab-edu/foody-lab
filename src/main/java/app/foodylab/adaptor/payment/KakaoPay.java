@@ -23,7 +23,7 @@ public class KakaoPay implements PayMethod {
     public boolean pay(PayReadyRequest readyRequest) {
         PayReadyResponse payReadyResponse = payApi.readyPay(readyRequest);
         String transactionId = payReadyResponse.getTransactionId();
-        PayApproveRequest approveRequest = new PayApproveRequest(readyRequest.getOrderId(), readyRequest.getStoreId(), readyRequest.getStoreCode(), transactionId);
+        PayApproveRequest approveRequest = new PayApproveRequest(readyRequest.getOrderId(), readyRequest.getStoreId(), transactionId);
         PayApproveResponse payApproveResponse = payApi.approvePay(approveRequest);
         return true;
     }

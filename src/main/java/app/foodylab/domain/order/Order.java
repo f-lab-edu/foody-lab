@@ -9,7 +9,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class Order {
 
-    private long id;
+    private String id;
     private final String customerId;
     private final String storeId;
     private final long orderPrice;
@@ -17,10 +17,10 @@ public class Order {
 
     public static Order of(String customerId, String storeId, long orderAmount,
         LocalDate orderedDate) {
-        return of(-1L, customerId, storeId, orderAmount, orderedDate);
+        return of(null, customerId, storeId, orderAmount, orderedDate);
     }
 
-    public static Order of(long id, String customerId, String storeId, long orderAmount,
+    public static Order of(String id, String customerId, String storeId, long orderAmount,
         LocalDate orderedDate) {
         require(ifOrderBeforeDate -> orderedDate.isBefore(LocalDate.now()), orderedDate,
             "주문이 생성된 날짜보다 이전 입니다.");
