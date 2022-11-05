@@ -11,11 +11,13 @@ public class ExternalKakaoPayImpl implements ExternalPayApi {
 
     @Override
     public PayReadyResponse readyPay(PayReadyRequest payReady) {
-        return new PayReadyResponse("transactionId", "nextUrl", LocalDate.now());
+        // todo: transactionId 이거는 외부 페이서비스에서 주는 아이디, 랜덤으로 만들까 고민중...
+        return new PayReadyResponse("transactionId", "/kakaopay", LocalDate.now());
     }
 
     @Override
     public PayApproveResponse approvePay(PayApproveRequest request) {
+        // todo: requestId 요청고유번호의 역할은..?
         return new PayApproveResponse("requestId", "transactionId", "orderId", "storeId");
     }
 }
