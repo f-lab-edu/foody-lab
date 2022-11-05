@@ -1,9 +1,7 @@
 package app.foodylab.domain.payment;
 
 import app.foodylab.domain.order.Order;
-import lombok.AccessLevel;
 import lombok.Getter;
-import lombok.RequiredArgsConstructor;
 
 @Getter
 public class PayReadyRequest {
