@@ -28,10 +28,21 @@ public class PayService {
     }
 
     public void pay(Order order, String payMethod, Coupon coupon) {
-        PayMethod method = payMethodMap.get(payMethod);
-        long discountPrice = coupon.getDiscountPrice(order.getOrderPrice());
-        PayReadyRequest payRequest = new PayReadyRequest(discountPrice, order.getStoreId(), order.getId());
-        payRequest.setToken(order.getId());
+        PayMethod method = getPayMethod(payMethod);
+        long discountPrice = getDiscountPrice(order, coupon);
+        PayReadyRequest payRequest = getPayReadyRequest(order, discountPrice);
         method.pay(payRequest);
+    }
+
+    private PayReadyRequest getPayReadyRequest(Order order, long discountPrice) {
+        return PayReadyRequest.of(discountPrice, order);
+    }
+
+    private long getDiscountPrice(Order order, Coupon coupon) {
+        return coupon.getDiscountPrice(order.getOrderPrice());
+    }
+
+    private PayMethod getPayMethod(String payMethod) {
+        return payMethodMap.get(payMethod);
     }
 }

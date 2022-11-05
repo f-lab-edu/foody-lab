@@ -1,5 +1,6 @@
 package app.foodylab.adaptor.payment;
 
+import app.foodylab.OrderFixture;
 import app.foodylab.domain.payment.PayReadyRequest;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
@@ -18,8 +19,7 @@ class KakaoPayTest {
     @Test
     @DisplayName("카카오페이의 pay() 테스트")
     void test2() {
-        PayReadyRequest payRequest = new PayReadyRequest(15000L, "storeId", "orderId");
-        payRequest.setToken("/token");
+        PayReadyRequest payRequest = PayReadyRequest.of(15000L, OrderFixture.DUMMY);
         boolean pay = kakaoPay.pay(payRequest);
         Assertions.assertTrue(pay);
     }
