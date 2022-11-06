@@ -8,7 +8,7 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor(access = AccessLevel.MODULE)
-public class OrderRequest {
+public class PayRequest {
     @Getter
     private final OrderDto orderDto;
     @Getter

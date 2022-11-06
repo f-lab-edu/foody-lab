@@ -1,6 +1,6 @@
 package app.foodylab.adaptor.controller;
 
-import app.foodylab.adaptor.OrderRequest;
+import app.foodylab.adaptor.PayRequest;
 import app.foodylab.application.payment.service.PayService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,7 +14,7 @@ public class OrderController {
     private final PayService payService;
 
     @PostMapping("/pay")
-    public void requestOrder(@RequestBody OrderRequest orderRequest) {
-        payService.pay(orderRequest.getOrderDto(), orderRequest.getPayMethod(), orderRequest.getCoupons());
+    public void requestPay(@RequestBody PayRequest payRequest) {
+        payService.pay(payRequest.getOrderDto(), payRequest.getPayMethod(), payRequest.getCoupons());
     }
 }
