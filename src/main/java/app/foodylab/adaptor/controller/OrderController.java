@@ -15,6 +15,10 @@ public class OrderController {
 
     @PostMapping("/pay")
     public void requestPay(@RequestBody PayRequest payRequest) {
+        pay(payRequest);
+    }
+
+    private void pay(PayRequest payRequest) {
         payService.pay(payRequest.getOrderDto(), payRequest.getPayMethod(), payRequest.getCoupons());
     }
 }
