@@ -2,11 +2,9 @@ package app.foodylab.application.order.service;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import app.foodylab.application.coupon.Coupon;
 import app.foodylab.coupon.PriceDiscountPolicySpy;
 import app.foodylab.coupon.RateDiscountPolicySpy;
-import app.foodylab.domain.coupon.PriceCoupon;
-import app.foodylab.domain.coupon.RateCoupon;
+import app.foodylab.domain.coupon.Coupon;
 import app.foodylab.domain.order.Order;
 import java.util.ArrayList;
 import java.util.List;
@@ -32,9 +30,9 @@ class OrderServiceTest {
     @Test
     @DisplayName("고객은 고정할인 쿠폰 2장만 적용 후 주문한다.")
     void test1() {
-        List<Coupon> couponList = new ArrayList<>();
-        couponList.add(PriceCoupon.of(1000L));
-        couponList.add(PriceCoupon.of(1000L));
+        List<app.foodylab.application.coupon.Coupon> couponList = new ArrayList<>();
+        couponList.add(Coupon.of(1000L));
+        couponList.add(Coupon.of(1000L));
 
         Order actual = sut.order("1", "2", 15000L, couponList);
 
@@ -47,7 +45,7 @@ class OrderServiceTest {
     @Test
     @DisplayName("고객은 퍼센트할인 쿠폰 2장만 적용 후 주문한다.")
     void test2() {
-        List<Coupon> couponList = new ArrayList<>();
+        List<app.foodylab.application.coupon.Coupon> couponList = new ArrayList<>();
         couponList.add(RateCoupon.of(10L));
         couponList.add(RateCoupon.of(30L));
 
@@ -62,9 +60,9 @@ class OrderServiceTest {
     @Test
     @DisplayName("고객은 고정할인 쿠폰 2장 + 퍼센트할인 2장 섞어서 계산 후 주문한다.")
     void test3() {
-        List<Coupon> couponList = new ArrayList<>();
-        couponList.add(PriceCoupon.of(1000L));
-        couponList.add(PriceCoupon.of(1000L));
+        List<app.foodylab.application.coupon.Coupon> couponList = new ArrayList<>();
+        couponList.add(Coupon.of(1000L));
+        couponList.add(Coupon.of(1000L));
         couponList.add(RateCoupon.of(10L));
         couponList.add(RateCoupon.of(5L));
 
@@ -79,9 +77,9 @@ class OrderServiceTest {
     @Test
     @DisplayName("할인 쿠폰을 적용 후 음수가 되면 최종 주문 가격은 0이 된다.")
     void test4() {
-        List<Coupon> couponList = new ArrayList<>();
-        couponList.add(PriceCoupon.of(1000L));
-        couponList.add(PriceCoupon.of(1000L));
+        List<app.foodylab.application.coupon.Coupon> couponList = new ArrayList<>();
+        couponList.add(Coupon.of(1000L));
+        couponList.add(Coupon.of(1000L));
         couponList.add(RateCoupon.of(10L));
         couponList.add(RateCoupon.of(90L));
 

@@ -1,45 +1,36 @@
 package app.foodylab.domain.coupon;
 
-import app.foodylab.application.coupon.Coupon;
 import java.time.LocalDate;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
-public class PriceCoupon implements Coupon {
+public class Coupon {
 
-    private final long discountPrice;
+    private final long discountAmount;
+    private final String nameOfCoupon;
+    private final String typeOfCoupon;
     private final LocalDate startDate;
     private final LocalDate endDate;
 
-    public static PriceCoupon of(final Long discountPrice) {
-        require(discountPrice > 0, "할인 금액은 0보다 커야 합니다.");
+    public static Coupon of(final Long discountAmount, String nameOfCoupon, String typeOfCoupon) {
+        require(discountAmount > 0, "할인 금액은 0보다 커야 합니다.");
         LocalDate now = LocalDate.now();
-        return of(discountPrice, now, now.plusYears(1));
+        return of(discountAmount, nameOfCoupon, typeOfCoupon, now, now.plusYears(1));
     }
 
-    public static PriceCoupon of(final long discountPrice, final LocalDate startDate,
-        final LocalDate endDate) {
+    public static Coupon of(final long discountAmount, String nameOfCoupon, String typeOfCoupon,
+        final LocalDate startDate, final LocalDate endDate) {
         LocalDate now = LocalDate.now();
-        require(discountPrice > 0, "할인 금액은 0보다 커야 합니다.");
+        require(discountAmount > 0, "할인 금액은 0보다 커야 합니다.");
         require(!startDate.isBefore(now), "쿠폰 사용 시작일은 현재보다 이전일 수 없습니다.");
         require(!endDate.isBefore(now), "쿠폰 사용 종료일은 현재보다 이전일 수 없습니다.");
         require(!endDate.isBefore(startDate), "쿠폰 사용 종료일은 시작일 이전일 수 없습니다.");
-        return new PriceCoupon(discountPrice, startDate, endDate);
+        return new Coupon(discountAmount, nameOfCoupon, typeOfCoupon, startDate, endDate);
     }
 
     private static void require(final boolean condition, final String msg) {
         if (!condition) {
             throw new IllegalArgumentException(msg);
         }
-    }
-
-    @Override
-    public long getDiscountPrice() {
-        return discountPrice;
-    }
-
-    @Override
-    public CouponType getCouponType() {
-        return CouponType.PRICE;
     }
 }
