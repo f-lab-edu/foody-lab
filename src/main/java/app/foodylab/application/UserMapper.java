@@ -1,7 +1,7 @@
 package app.foodylab.application;
 
-import app.foodylab.adaptor.UserDTO;
-import app.foodylab.user.domain.User;
+import app.foodylab.adaptor.CustomerDto;
+import app.foodylab.domain.customer.Customer;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
@@ -9,5 +9,5 @@ import org.mapstruct.factory.Mappers;
 public interface UserMapper {
     UserMapper INSTANCE = Mappers.getMapper(UserMapper.class);
 
-    User toUser(UserDTO userDTO);
+    Customer toUser(CustomerDto customerDto);
 }
