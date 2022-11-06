@@ -1,4 +1,4 @@
-package app.foodylab.user.adapter.dto;
+package app.foodylab.adaptor;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;

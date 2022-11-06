@@ -1,6 +1,6 @@
-package app.foodylab.user.utils;
+package app.foodylab.application;
 
-import app.foodylab.user.adapter.dto.UserDTO;
+import app.foodylab.adaptor.UserDTO;
 import app.foodylab.user.domain.User;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
