@@ -1,10 +1,11 @@
 package app.foodylab.adaptor;
 
 import java.time.LocalDate;
+import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
-@RequiredArgsConstructor
+@RequiredArgsConstructor(access = AccessLevel.PUBLIC)
 @Getter
 public class OrderDto {
     private final long id;
