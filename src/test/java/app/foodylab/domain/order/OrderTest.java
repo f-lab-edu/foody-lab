@@ -26,7 +26,7 @@ class OrderTest {
     @MethodSource("argumentsStream1")
     void test4(String description, String customerId, String storeId, long orderPrice,
         LocalDate orderDate) {
-        assertDoesNotThrow(() -> Order.of(customerId, storeId, orderPrice, orderDate));
+        assertDoesNotThrow(() -> Order.of(null, customerId, storeId, orderPrice, orderDate));
     }
 
     private static Collection<Arguments> argumentsStream2() {
@@ -52,7 +52,7 @@ class OrderTest {
     void test3(String description, String customerId, String storeId, long orderPrice,
         LocalDate orderDate, String errorMsg) {
         IllegalArgumentException e = assertThrows(IllegalArgumentException.class,
-            () -> Order.of(customerId, storeId, orderPrice, orderDate));
+            () -> Order.of(null, customerId, storeId, orderPrice, orderDate));
         assertThat(e.getMessage()).isEqualTo(errorMsg);
     }
 }

@@ -8,7 +8,8 @@ public class OrderFixture {
     private OrderFixture() {
     }
 
-    public static Order DUMMY = new Order(
+    public static final Order DUMMY = new Order(
+        null,
         "1",
         "1",
         15000L,
