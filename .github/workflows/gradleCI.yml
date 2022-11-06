@@ -32,6 +32,10 @@ jobs:
       uses: gradle/gradle-build-action@67421db6bd0bf253fb4bd25b31ebb98943c375e1
       with:
         arguments: build
+    - name: Build with Gradle
+      uses: gradle/gradle-build-action@67421db6bd0bf253fb4bd25b31ebb98943c375e1
+      with:
+        arguments: jacocoTestReport
     - name: 테스트 커버리지를 PR에 코멘트로 등록합니다
       id: jacoco
       uses: madrapps/jacoco-report@v1.2
