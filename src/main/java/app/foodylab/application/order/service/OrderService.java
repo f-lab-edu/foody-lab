@@ -3,7 +3,6 @@ package app.foodylab.application.order.service;
 import static java.util.stream.Collectors.toMap;
 
 import app.foodylab.application.coupon.Coupon;
-import app.foodylab.application.coupon.CouponDiscountPolicy;
 import app.foodylab.domain.coupon.CouponType;
 import app.foodylab.domain.order.Order;
 import java.time.LocalDate;

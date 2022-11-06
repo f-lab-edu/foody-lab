@@ -1,11 +1,12 @@
-package app.foodylab.application.coupon;
+package app.foodylab.domain.discount;
 
+import app.foodylab.application.coupon.Coupon;
 import app.foodylab.domain.coupon.CouponType;
 import app.foodylab.domain.payment.DiscountPriceCalculateService;
 import org.springframework.stereotype.Component;
 
 @Component
-public class RateDiscountPolicy implements CouponDiscountPolicy {
+public class RateDiscountPolicy implements DiscountPolicy {
 
     private DiscountPriceCalculateService discountPriceCalculateService = new DiscountPriceCalculateService();
 
