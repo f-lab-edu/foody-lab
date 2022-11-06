@@ -1,6 +1,6 @@
 package app.foodylab;
 
-import app.foodylab.adaptor.OrderDto;
+import app.foodylab.application.dto.OrderDto;
 import java.time.LocalDate;
 
 public class OrderDTOFixture {

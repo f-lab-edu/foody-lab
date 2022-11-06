@@ -1,6 +1,6 @@
 package app.foodylab.application.payment.service;
 
-import app.foodylab.adaptor.OrderDto;
+import app.foodylab.application.dto.OrderDto;
 import app.foodylab.application.coupon.Coupon;
 import app.foodylab.application.order.mapper.OrderMapper;
 import app.foodylab.application.payment.PayMethod;

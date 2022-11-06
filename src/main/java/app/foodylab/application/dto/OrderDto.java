@@ -1,4 +1,4 @@
-package app.foodylab.adaptor;
+package app.foodylab.application.dto;
 
 import java.time.LocalDate;
 import lombok.AccessLevel;

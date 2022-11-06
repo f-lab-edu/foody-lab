@@ -1,6 +1,7 @@
 package app.foodylab.adaptor;
 
 import app.foodylab.application.coupon.Coupon;
+import app.foodylab.application.dto.OrderDto;
 import java.util.Collections;
 import java.util.List;
 import lombok.AccessLevel;
