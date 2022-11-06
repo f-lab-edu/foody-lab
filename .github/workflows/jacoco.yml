@@ -12,10 +12,14 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: 11
-      - name: Run Coverage
+      - name: Run Test
         run: |
           chmod +x gradlew
-          ./gradlew jacocoTestReport
+          ./gradlew test
+      - name: Run TestReport
+        run: |
+          chmod +x gradlew
+          ./gradlew jacocoTestReport      
 
       - name: Add coverage to PR
         id: jacoco
