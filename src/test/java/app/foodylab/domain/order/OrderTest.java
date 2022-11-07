@@ -1,15 +1,12 @@
 package app.foodylab.domain.order;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Collection;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.Arguments;
-import org.junit.jupiter.params.provider.MethodSource;
+import java.util.*;
+import org.junit.jupiter.params.*;
+import org.junit.jupiter.params.provider.*;
 
 class OrderTest {
 
@@ -31,20 +28,14 @@ class OrderTest {
 
     private static Collection<Arguments> argumentsStream2() {
         LocalDate now = LocalDate.now();
-        Collection<Arguments> list = new ArrayList<>();
-        list.add(
+        return Arrays.asList(
             Arguments.of("Order 클래스의 of 메소드 테스트, 주문 하려고 하는 고객이 없으면 주문 생성이 안된다.", null, "storeId",
-                10000L, now, "고객은 필수값 입니다.")
-        );
-        list.add(
+                10000L, now, "고객은 필수값 입니다."),
             Arguments.of("주문 하려고 하는 가게가 없으면 주문 생성이 안된다.", "customerId", null, 10000L, now,
-                "가게는 필수값 입니다.")
-        );
-        list.add(
+                "가게는 필수값 입니다."),
             Arguments.of("주문이 생성된 날짜보다 이전이면 주문이 안된다.", "customerId", "storeId", 10000L,
                 now.minusDays(1), "주문이 생성된 날짜보다 이전 입니다.")
         );
-        return list;
     }
 
     @ParameterizedTest(name = "{index}: {0}")
