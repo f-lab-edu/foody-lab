@@ -2,6 +2,7 @@ package app.foodylab.application.payment.service;
 
 import app.foodylab.application.payment.PayMethod;
 import app.foodylab.domain.coupon.Coupon;
+import app.foodylab.domain.coupon.CouponType;
 import app.foodylab.domain.order.Order;
 import app.foodylab.domain.payment.PayReadyRequest;
 import java.util.List;
@@ -35,7 +36,8 @@ public class PayService {
     }
 
     private long getDiscountPrice(Order order, Coupon coupon) {
-        return coupon.getDiscountPrice(order.getOrderPrice());
+        CouponType typeOfCoupon = coupon.getTypeOfCoupon();
+        return typeOfCoupon.getPolicy().discount(order.getOrderPrice(), coupon.getDiscountAmount());
     }
 
     private PayReadyRequest getPayReadyRequest(Order order, long discountPrice) {
