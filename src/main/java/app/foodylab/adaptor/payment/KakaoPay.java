@@ -1,14 +1,15 @@
 package app.foodylab.adaptor.payment;
 
-import app.foodylab.application.payment.ExternalPayAPI;
+import app.foodylab.application.payment.ExternalPayApi;
 import app.foodylab.application.payment.PayMethod;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import app.foodylab.domain.payment.PayApproveRequest;
+import app.foodylab.domain.payment.PayApproveResponse;
+import app.foodylab.domain.payment.PayReadyRequest;
+import app.foodylab.domain.payment.PayReadyResponse;
 
 public class KakaoPay implements PayMethod {
 
-    private final Logger logger = LoggerFactory.getLogger(KakaoPay.class);
-    private final ExternalPayAPI payAPI = new ExternalKakaoPayImpl();
+    private final ExternalPayApi payApi = new ExternalKakaoPayImpl();
 
     @Override
     public String getMethod() {
@@ -16,11 +17,22 @@ public class KakaoPay implements PayMethod {
     }
 
     @Override
-    public boolean pay(long price) {
-        boolean isPaid = payAPI.processPay(price);
-        if (isPaid && logger.isInfoEnabled()) {
-            logger.info("카카오페이로 {}원이 결제되었습니다.", price);
-        }
-        return isPaid;
+    public PayApproveResponse pay(PayReadyRequest readyRequest) {
+        PayReadyResponse payReadyResponse = getPayReadyResponse(readyRequest);
+        PayApproveRequest approveRequest = getPayApproveRequest(readyRequest, payReadyResponse);
+        return getPayApproveResponse(approveRequest);
+    }
+
+    private PayReadyResponse getPayReadyResponse(PayReadyRequest readyRequest) {
+        return payApi.readyPay(readyRequest);
+    }
+
+    private PayApproveRequest getPayApproveRequest(PayReadyRequest readyRequest,
+        PayReadyResponse payReadyResponse) {
+        return PayApproveRequest.of(readyRequest, payReadyResponse);
+    }
+
+    private PayApproveResponse getPayApproveResponse(PayApproveRequest approveRequest) {
+        return payApi.approvePay(approveRequest);
     }
 }
