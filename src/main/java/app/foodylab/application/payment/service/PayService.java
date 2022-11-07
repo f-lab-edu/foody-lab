@@ -1,13 +1,11 @@
 package app.foodylab.application.payment.service;
 
 import app.foodylab.application.dto.OrderDto;
-import app.foodylab.application.coupon.Coupon;
 import app.foodylab.application.order.mapper.OrderMapper;
 import app.foodylab.application.payment.PayMethod;
-import app.foodylab.domain.coupon.Coupon;
+import app.foodylab.domain.coupon.*;
 import app.foodylab.domain.order.Order;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 import javax.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
@@ -33,7 +31,9 @@ public class PayService {
     public void pay(OrderDto orderDTO, String payMethod, Coupon coupon) {
         Order order = orderMapper.toOrder(orderDTO);
         PayMethod method = payMethodMap.get(payMethod);
-        coupon.getDiscountPrice(order.getOrderPrice(), 100L);
+        CouponType typeOfCoupon = coupon.getTypeOfCoupon();
+        long price = typeOfCoupon.getPolicy()
+            .discount(order.getOrderPrice(), coupon.getDiscountAmount());
         method.pay(price);
     }
 }

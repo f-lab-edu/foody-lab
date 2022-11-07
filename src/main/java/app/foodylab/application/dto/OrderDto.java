@@ -1,6 +1,6 @@
 package app.foodylab.application.dto;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -12,5 +12,5 @@ public class OrderDto {
     private final String customerId;
     private final String storeId;
     private final long orderPrice;
-    private final LocalDate orderedDate;
+    private final LocalDateTime orderedDateTime;
 }

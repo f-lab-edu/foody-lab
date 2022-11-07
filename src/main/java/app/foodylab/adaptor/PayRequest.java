@@ -1,22 +1,15 @@
 package app.foodylab.adaptor;
 
-import app.foodylab.application.coupon.Coupon;
 import app.foodylab.application.dto.OrderDto;
-import java.util.Collections;
-import java.util.List;
+import app.foodylab.domain.coupon.Coupon;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
-@RequiredArgsConstructor(access = AccessLevel.MODULE)
+@RequiredArgsConstructor(access = AccessLevel.PUBLIC)
+@Getter
 public class PayRequest {
-    @Getter
     private final OrderDto orderDto;
-    @Getter
     private final String payMethod;
-    private final List<Coupon> coupons;
-
-    public List<Coupon> getCoupons() {
-        return Collections.unmodifiableList(coupons);
-    }
+    private final Coupon coupons;
 }
