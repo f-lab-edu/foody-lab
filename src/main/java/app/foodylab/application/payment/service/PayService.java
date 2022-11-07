@@ -4,8 +4,8 @@ import app.foodylab.application.dto.OrderDto;
 import app.foodylab.application.coupon.Coupon;
 import app.foodylab.application.order.mapper.OrderMapper;
 import app.foodylab.application.payment.PayMethod;
+import app.foodylab.domain.coupon.Coupon;
 import app.foodylab.domain.order.Order;
-import app.foodylab.domain.payment.DiscountPriceCalculateService;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -18,7 +18,6 @@ import org.springframework.stereotype.Service;
 public class PayService {
 
     private final List<PayMethod> payMethodList;
-    private final DiscountPriceCalculateService discountPriceCalculateService = new DiscountPriceCalculateService();
     private Map<String, PayMethod> payMethodMap;
     private OrderMapper orderMapper = OrderMapper.INSTANCE;
 
@@ -31,10 +30,10 @@ public class PayService {
         ));
     }
 
-    public void pay(OrderDto orderDTO, String payMethod, List<Coupon> coupons) {
+    public void pay(OrderDto orderDTO, String payMethod, Coupon coupon) {
         Order order = orderMapper.toOrder(orderDTO);
         PayMethod method = payMethodMap.get(payMethod);
-        long price = discountPriceCalculateService.getPrice(order, coupons);
+        coupon.getDiscountPrice(order.getOrderPrice(), 100L);
         method.pay(price);
     }
 }
