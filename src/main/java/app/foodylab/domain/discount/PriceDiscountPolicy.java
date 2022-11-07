@@ -3,8 +3,8 @@ package app.foodylab.domain.discount;
 public class PriceDiscountPolicy implements DiscountPolicy {
 
     @Override
-    public long discount(long productPrice, long discountPrice) {
-        return productPrice * discountPrice / 100;
+    public long discount(long productPrice, long discountAmount) {
+        return productPrice - discountAmount;
     }
 
 }
