@@ -3,6 +3,7 @@ plugins {
 	id 'io.spring.dependency-management' version '1.0.13.RELEASE'
 	id 'java'
 	id "java-test-fixtures"
+	id 'jacoco'
 }
 
 group = 'app'
@@ -18,7 +19,31 @@ configurations {
 repositories {
 	mavenCentral()
 }
+jacoco {
+	toolVersion = '0.8.8'
+}
 
+jacocoTestReport {
+	reports {
+		html.enabled true
+		xml.enabled true
+		csv.enabled false
+	}
+}
+
+jacocoTestCoverageVerification {
+	violationRules {
+		rule {
+			element = 'CLASS'
+
+			limit {
+				counter = 'BRANCH'
+				value = 'COVEREDRATIO'
+				minimum = 0.50
+			}
+		}
+	}
+}
 dependencies {
 	/*
 	* 의존성은 다음과 같은 순서로 추가했습니다.
@@ -46,6 +71,10 @@ dependencies {
 
 	// flyway
 	implementation 'org.flywaydb:flyway-mysql'
+
+	// mapstruct
+	implementation 'org.mapstruct:mapstruct:1.5.3.Final'
+	annotationProcessor 'org.mapstruct:mapstruct-processor:1.5.3.Final'
 
 }
 

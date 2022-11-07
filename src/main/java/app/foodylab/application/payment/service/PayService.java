@@ -1,7 +1,7 @@
 package app.foodylab.application.payment.service;
 
-import app.foodylab.application.coupon.Coupon;
 import app.foodylab.application.payment.PayMethod;
+import app.foodylab.domain.coupon.Coupon;
 import app.foodylab.domain.order.Order;
 import app.foodylab.domain.payment.PayReadyRequest;
 import java.util.List;
