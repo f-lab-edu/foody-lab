@@ -1,7 +1,7 @@
 package app.foodylab;
 
 import app.foodylab.domain.order.Order;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class OrderFixture {
 
@@ -10,6 +10,6 @@ public class OrderFixture {
         "1",
         "1",
         15000L,
-        LocalDate.now()
+        LocalDateTime.now()
     );
 }
