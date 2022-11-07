@@ -36,7 +36,7 @@ public class PayService {
     }
 
     private long getDiscountPrice(Order order, Coupon coupon) {
-        CouponType typeOfCoupon = coupon.getTypeOfCoupon();
+        CouponType typeOfCoupon = coupon.getType();
         return typeOfCoupon.getPolicy().discount(order.getOrderPrice(), coupon.getDiscountAmount());
     }
 

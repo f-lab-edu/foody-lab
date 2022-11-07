@@ -9,8 +9,8 @@ import lombok.RequiredArgsConstructor;
 public class Coupon {
 
     private final long discountAmount;
-    private final String nameOfCoupon;
-    private final CouponType typeOfCoupon;
+    private final String name;
+    private final CouponType type;
     private final LocalDate startDate;
     private final LocalDate endDate;
 

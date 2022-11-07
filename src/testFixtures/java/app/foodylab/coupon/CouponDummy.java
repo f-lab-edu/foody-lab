@@ -8,8 +8,8 @@ public class CouponDummy extends Coupon {
 
     public static final Coupon INSTANCE = Coupon.of(1000L, "coupon", CouponType.PRICE);
 
-    public CouponDummy(long discountAmount, String nameOfCoupon, CouponType typeOfCoupon,
-        LocalDate startDate, LocalDate endDate) {
-        super(discountAmount, nameOfCoupon, typeOfCoupon, startDate, endDate);
+    public CouponDummy(long discountAmount, String name, CouponType type, LocalDate startDate,
+        LocalDate endDate) {
+        super(discountAmount, name, type, startDate, endDate);
     }
 }
